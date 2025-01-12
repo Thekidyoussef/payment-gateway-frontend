@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment Gateway</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="banner">
+            <img src="https://via.placeholder.com/1500x300?text=Secure+Payment+Gateway" alt="Payment Gateway Banner">
+        </div>
+        <div class="payment-container">
+            <h2>Complete Your Payment</h2>
+            <p>Pay securely using your credit or debit card. We ensure your payment information is safe.</p>
+            <form id="payment-form">
+                <div class="input-group">
+                    <label for="cardholder-name">Cardholder Name</label>
+                    <input type="text" id="cardholder-name" placeholder="John Doe" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                </div>
+                
+                <div class="flex-row">
+                    <div class="input-group">
+                        <label for="expiry-date">Expiry Date</label>
+                        <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cvv">CVV</label>
+                        <input type="password" id="cvv" placeholder="123" maxlength="4" required>
+                    </div>
+                </div>
+                
+                <button type="submit">Pay Now</button>
+            </form>
+            <div id="loading" style="display: none;">Processing your payment...</div>
+            <div id="message"></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

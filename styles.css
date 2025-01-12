@@ -1,0 +1,109 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9fafb;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+
+/* Banner Image */
+.banner img {
+    width: 100%;
+    height: auto;
+    border-bottom: 4px solid #4caf50;
+}
+
+/* Payment Container */
+.payment-container {
+    background: #ffffff;
+    width: 90%;
+    max-width: 450px;
+    margin-top: -30px;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Heading and Text */
+h2 {
+    color: #4caf50;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Flex Row for Expiry and CVV */
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Loading and Message */
+#loading {
+    text-align: center;
+    margin-top: 15px;
+    color: #007bff;
+    font-size: 16px;
+}
+
+#message {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
