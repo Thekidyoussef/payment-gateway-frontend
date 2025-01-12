@@ -1,45 +1,51 @@
-document.getElementById("payment-form").addEventListener("submit", async function (event) {
-    event.preventDefault();
+// script.js
 
-    const cardholderName = document.getElementById("cardholder-name").value;
-    const cardNumber = document.getElementById("card-number").value;
-    const expiryDate = document.getElementById("expiry-date").value;
-    const cvv = document.getElementById("cvv").value;
+// Replace this with your live Heroku backend URL
+const backendURL = "https://backend-getway-92448bc220e7.herokuapp.com/";
 
-    // Display loading spinner
-    const loading = document.getElementById("loading");
-    const message = document.getElementById("message");
-    loading.style.display = "block";
-    message.innerHTML = "";
+// Function to handle form submission
+async function handlePayment(event) {
+  event.preventDefault();
 
-    // Encrypt sensitive data
-    const paymentData = {
-        cardholderName,
-        cardNumber,
-        expiryDate,
-        cvv,
-    };
+  // Collect form data
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const amount = document.getElementById("amount").value;
 
-    const encryptedData = CryptoJS.AES.encrypt(
-        JSON.stringify(paymentData),
-        "secure-key"
-    ).toString();
+  // Create a payment request object
+  const paymentData = {
+    name,
+    email,
+    amount,
+  };
 
-    // Send to backend
-    try {
-        const response = await fetch("https://backend-getway-92448bc220e7.herokuapp.com/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ data: encryptedData }),
-        });
+  try {
+    // Send payment data to the backend
+    const response = await fetch(`${backendURL}/process-payment`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(paymentData),
+    });
 
-        const result = await response.json();
-        loading.style.display = "none";
-        message.innerHTML = `<p>${result.message}</p>`;
-    } catch (error) {
-        loading.style.display = "none";
-        message.innerHTML = `<p style="color: red;">An error occurred. Please try again.</p>`;
+    const result = await response.json();
+
+    if (response.ok) {
+      // Payment was successful
+      alert(`Payment successful! Transaction ID: ${result.transactionId}`);
+    } else {
+      // Handle errors from the backend
+      alert(`Payment failed: ${result.message}`);
     }
+  } catch (error) {
+    // Handle network or other errors
+    console.error("Error processing payment:", error);
+    alert("An error occurred while processing your payment. Please try again.");
+  }
 }
+
+// Attach event listener to the form
+document
+  .getElementById("payment-form")
+  .addEventListener("submit", handlePayment);
