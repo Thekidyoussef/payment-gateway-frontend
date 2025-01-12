@@ -27,7 +27,7 @@ document.getElementById("payment-form").addEventListener("submit", async functio
 
     // Send to backend
     try {
-        const response = await fetch("http://localhost:3000/payment", {
+        const response = await fetch("https://backend-getway-92448bc220e7.herokuapp.com/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -42,4 +42,4 @@ document.getElementById("payment-form").addEventListener("submit", async functio
         loading.style.display = "none";
         message.innerHTML = `<p style="color: red;">An error occurred. Please try again.</p>`;
     }
-});
+}
